@@ -1,5 +1,9 @@
 # jw_video下載工具
 列出某個時段的jw.org影片下載網址及自動下載字幕
+# 程式語言安裝
+到以下網站安裝python3:    
+https://www.python.org
+
 # 步驟一：install   
 打開mac內建的terminal(application\Utilities)    
 在terminal內輸入以下程式碼安裝所需元件：    
