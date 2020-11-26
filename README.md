@@ -7,7 +7,7 @@ https://www.python.org
 # 步驟一：安裝
 打開mac內建的terminal(application\Utilities)    
 在terminal內輸入以下程式碼安裝所需元件：    
-```pip3 install requests```
+```sudo pip3 install requests```
 # 步驟二：執行
 （方法1）在terminal內輸入（要留意jw_video.py的檔案位置）：
 ``` python3 jw_video.py```    
