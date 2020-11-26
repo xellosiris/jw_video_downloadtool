@@ -8,3 +8,4 @@
 （方法1）在terminal內輸入（要留意jw_video.py的檔案位置）：
 ``` python3 jw_video.py```    
 （方法2）在terminal內輸入 「python3」，接著，將檔案拉入的視窗內
+![image](https://github.com/xellosiris/jw_video_downloadtool/blob/main/python.gif)
