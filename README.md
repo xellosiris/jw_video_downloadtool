@@ -1,4 +1,4 @@
-# jw_video_downloadtool
+# jw_video下載工具
 列出某個時段的jw.org影片下載網址及自動下載字幕
 # 步驟一：install   
 打開mac內建的terminal(application\Utilities)    
