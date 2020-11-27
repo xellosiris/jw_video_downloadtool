@@ -3,6 +3,7 @@ from datetime import datetime
 import re,os,sys
 from distutils.util import strtobool
 # 選擇語言
+os.system("clear")
 print("請輸入您想使用的語言：\n(1)繁體中文\n(2)日本語\n(3)English")
 language=input("您輸入的語言為：")
 if language=="1":
