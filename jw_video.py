@@ -1,20 +1,24 @@
-import requests
+import requests,readline
 from datetime import datetime
 import re,os,sys
 from distutils.util import strtobool
-print("請輸入您想使用的語言：\n(1)繁體中文\n(2)日本語")
+# 選擇語言
+print("請輸入您想使用的語言：\n(1)繁體中文\n(2)日本語\n(3)English")
 language=input("您輸入的語言為：")
 if language=="1":
     language="CH"
 elif language=="2":
     language="J"
+elif language=="3":
+    language="E"
 else:
     sys.exit("程式關閉：語言輸入錯誤！")
 # 第一層目錄
+os.system("clear")
 key1=""
+url="https://b.jw-cdn.org/apis/mediator/v1/categories/"+language+"/VideoOnDemand?detailed=1&clientType=www"
+category_list_1=requests.get(url).json()["category"]["subcategories"]
 while key1 != "q":
-    url="https://b.jw-cdn.org/apis/mediator/v1/categories/"+language+"/VideoOnDemand?detailed=1&clientType=www"
-    category_list_1=requests.get(url).json()["category"]["subcategories"]
     for sub_category in category_list_1:
         print("("+str(category_list_1.index(sub_category))+")",sub_category["name"])
     print("(q)結束程式")
@@ -23,11 +27,11 @@ while key1 != "q":
         quit()
     os.system("clear")
     key1=int(key1)
+    url="https://b.jw-cdn.org/apis/mediator/v1/categories/"+language+"/"+category_list_1[key1]["key"]+"?detailed=1&clientType=www"
+    category_list_2=requests.get(url).json()["category"]["subcategories"]
     key2=""
     # 第二層目錄
     while key2!="q":
-        url="https://b.jw-cdn.org/apis/mediator/v1/categories/"+language+"/"+category_list_1[key1]["key"]+"?detailed=1&clientType=www"
-        category_list_2=requests.get(url).json()["category"]["subcategories"]
         for sub_category in category_list_2:
             print("("+str(category_list_2.index(sub_category))+")",sub_category["name"])
         print("(q)回上一層")
@@ -47,7 +51,7 @@ while key1 != "q":
             subtitle_download=bool(strtobool(input("是否需要下載字幕？（Y/n）:")))
         except:
             sys.exit("輸入錯誤！請輸入Y或N")
-        print("\n")
+
         timestamp="[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]"
         regex=re.compile(timestamp)
         url="https://b.jw-cdn.org/apis/mediator/v1/categories/"+language+"/"+category_list_2[key2]["key"]+"?detailed=1&clientType=www"
@@ -79,7 +83,7 @@ while key1 != "q":
                         print(media["title"],"沒有字幕")
         if date !=[]:       
             if subtitle_download is True :
-                print("字幕已全部下載完成！檔案已存放在以下位置：",os.getcwd())
+                print("字幕已全部下載完成！檔案已存放在以下位置：",os.getcwd(),"\n")
         else:
-            print("搜尋範圍沒有任何影片")
+            print("搜尋範圍沒有任何影片\n")
     os.system("clear")
